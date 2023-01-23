@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    postdb:
+        image: ${USER_DB_IMAGE:-postgres:14.2-alpine}
+        container_name: postdbcontainer
+        ports:
+        - 5437:5432
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+            POSTGRES_USER: ${POSTGRES_USER:-postgres}
+        restart: always
+
+    app:
+        image: ${USER_SERVICE_IMAGE}
+        container_name: postservice_container
+        ports:
+            - 8888:8888
+        environment:
+            PASSWORD: ${POSTGRES_PASSWORD}
+            USERNAME: ${POSTGRES_USER}
+            URL: ${URL}
+            FEIGN_URL: ${FEIGN_URL}
+        depends_on:
+            - postdb
+        restart: always
