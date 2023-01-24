@@ -31,6 +31,7 @@ public class Post {
     private Long authorId;
 
     private String text;
+    private String title;
     @CreatedDate
     @Column(updatable = false)
     private Instant postedAt;

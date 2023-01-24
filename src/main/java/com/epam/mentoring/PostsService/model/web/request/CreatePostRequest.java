@@ -11,4 +11,5 @@ public class CreatePostRequest {
 
     private Long authorId;
     private String text;
+    private String title;
 }

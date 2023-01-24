@@ -13,5 +13,6 @@ public class PostResponse {
     private Long id;
     private Long authorId;
     private String text;
+    private String title;
     private Instant postedAt;
 }

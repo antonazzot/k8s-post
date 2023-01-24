@@ -18,4 +18,22 @@ spring:
 feign:
   url: ${FEIGN_URL}
 
-
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+      group:
+        liveness:
+          include: "livenessstate,db"
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true

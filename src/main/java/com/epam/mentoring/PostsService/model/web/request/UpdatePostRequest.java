@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdatePostRequest {
     private String text;
+    private String title;
 }
